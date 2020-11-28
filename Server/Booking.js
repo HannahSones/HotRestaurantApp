@@ -6,16 +6,16 @@ class Booking {
         this.id = id; 
     }
     getName(){
-
+        return this.name;
     }
     getNumber(){
-
+        return this.number;
     }
     getEmail(){
-
+        return this.email;
     }
     getId(){
-
+        return this.id;
     }
 }
 
