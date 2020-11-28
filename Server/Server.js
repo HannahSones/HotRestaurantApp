@@ -7,6 +7,13 @@ const booking = require("./Booking");
 const app = express();
 const PORT = 3000;
 
+
+
+// sets up the express app to handle data parsing
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
 var bookings = [
   {
     name: "corey",
@@ -35,8 +42,15 @@ var bookings = [
   reservations.push(newBooking);
 } */
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+//  Create a new character - takes in JSON input 
+app.post("/tables", function(req, res){
+
+  const newBooking = req.body;
+  console.log("newBookings", newBooking); 
+  bookings.push(newBooking);
+
+  res.json(bookings);
+}) 
 
 app.use("/", express.static("../Client"));
 
