@@ -6,6 +6,12 @@ const booking = require('./Booking');
 const app = express();
 const PORT = 3000;
 
+
+
+// sets up the express app to handle data parsing
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 let reservations = [];
 
 let waitList = [];
@@ -18,8 +24,7 @@ if (reservations.length === 5){
   reservations.push(newBooking);
 }
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
 
 app.listen(PORT, function () {
   console.log("Server is listening on Port ", PORT);
