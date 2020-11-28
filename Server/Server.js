@@ -1,4 +1,5 @@
 const express = require("express");
+const { Server } = require("http");
 const path = require("path");
 const { getMaxListeners } = require("process");
 const Booking = require("./Booking");
@@ -61,3 +62,5 @@ app.get("/tables", function (req, res) {
 app.listen(PORT, function () {
   console.log("Server is listening on Port ", PORT);
 });
+
+module.exports = bookings;

@@ -30,7 +30,7 @@
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header">Table Reservation</div>
                     <div class="card-body">
-                        <form>
+                        <form action="submit" id="submitForm">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" id="inputName" name="name">
                             <label for="phone number">Phone Number</label>
@@ -39,8 +39,8 @@
                             <input type="email" class="form-control" id="inputEmail" name="email">
                             <label for="unique ID">Unique ID</label>
                             <input type="text" class="form-control" id="uniqueID" name="unique ID">
+                            <button type="button" class="btn btn-primary">Submit</button>
                         </form>
-                        <button type="button" class="btn btn-primary" type="submit">Submit</button>
                     </div>
                 </div>
             </div>
@@ -48,5 +48,6 @@
     </div>
 
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/Server/script.js"></script>
 </html>
