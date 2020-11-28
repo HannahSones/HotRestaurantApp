@@ -38,16 +38,10 @@ var bookings = [
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "../Client/home.html"));
-});
-app.get("/tables", function (req, res) {
-  res.json();
-  res.sendFile(path.join(__dirname, "../Client/tables.html"));
-});
+app.use("/", express.static("../Client"));
 
-app.get("/reserve", function (req, res) {
-  res.sendFile(path.join(__dirname, "../Client/reserve.html"));
+app.get("/tables", function (req, res) {
+  res.json(bookings);
 });
 
 app.listen(PORT, function () {
