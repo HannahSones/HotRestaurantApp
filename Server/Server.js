@@ -1,5 +1,4 @@
 const express = require("express");
-const { Server } = require("http");
 const path = require("path");
 const { getMaxListeners } = require("process");
 const Booking = require("./Booking");
@@ -43,6 +42,12 @@ var bookings = [
   reservations.push(newBooking);
 } */
 
+app.use("/", express.static("../Client"));
+
+app.get("/tables", function (req, res) {
+  res.json(bookings);
+});
+
 //  Create a new character - takes in JSON input 
 app.post("/tables", function(req, res){
 
@@ -53,14 +58,9 @@ app.post("/tables", function(req, res){
   res.json(bookings);
 }) 
 
-app.use("/", express.static("../Client"));
-
-app.get("/tables", function (req, res) {
-  res.json(bookings);
-});
-
 app.listen(PORT, function () {
   console.log("Server is listening on Port ", PORT);
 });
+
 
 module.exports = bookings;
