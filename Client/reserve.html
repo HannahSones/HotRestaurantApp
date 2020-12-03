@@ -22,7 +22,7 @@
             Tables</button>
         <button type="button" class="btn btn-danger" type="submit" onclick="document.location='index.html'"><i
                 class="fas fa-home"></i></button>
-        </div>
+    </div>
 
     <div class="container-fluid">
         <div class="row">
@@ -30,7 +30,7 @@
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header">Table Reservation</div>
                     <div class="card-body">
-                        <form action="submit" id="submitForm">
+                        <form id="reserveForm">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" id="inputName" name="name">
                             <label for="phone number">Phone Number</label>
@@ -39,7 +39,7 @@
                             <input type="email" class="form-control" id="inputEmail" name="email">
                             <label for="unique ID">Unique ID</label>
                             <input type="text" class="form-control" id="uniqueID" name="unique ID">
-                            <button type="button" class="btn btn-primary">Submit</button>
+                            <button type="submit" name="Submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -49,5 +49,6 @@
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="/Server/script.js"></script>
+<script src="./script.js"></script>
+
 </html>
