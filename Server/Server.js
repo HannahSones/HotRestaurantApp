@@ -1,37 +1,30 @@
 const express = require("express");
-const path = require("path");
-const { getMaxListeners } = require("process");
-const Booking = require("./Booking");
-const booking = require("./Booking");
 
 const app = express();
 const PORT = 3000;
-
-
 
 // sets up the express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
 var bookings = [
   {
-    name: "corey",
+    name: "Corey",
     email: "Corey@gmail.com",
-    phoneNumber: 07979797979,
+    phoneNumber: "07979797979",
     id: "Corey",
   },
   {
-    name: "corey",
-    email: "Corey@gmail.com",
-    phoneNumber: 07979797979,
-    id: "Corey",
+    name: "Tom",
+    email: "Tom@gmail.com",
+    phoneNumber: "07979797979",
+    id: "Tom",
   },
   {
-    name: "corey",
-    email: "Corey@gmail.com",
-    phoneNumber: 07979797979,
-    id: "Corey",
+    name: "James",
+    email: "James@gmail.com",
+    phoneNumber: "07979797979",
+    id: "James",
   },
 ];
 /* const newBooking = new Booking(name, number, email, id); */
@@ -42,25 +35,26 @@ var bookings = [
   reservations.push(newBooking);
 } */
 
+//  Create a new character - takes in JSON input
+
 app.use("/", express.static("../Client"));
 
-app.get("/tables", function (req, res) {
+app.get("/api/tables", function (req, res) {
+  console.log("req.body get =", req.body);
   res.json(bookings);
 });
 
-//  Create a new character - takes in JSON input 
-app.post("/tables", function(req, res){
 
+app.post("/api/reserve", function (req, res) {
   const newBooking = req.body;
-  console.log("newBookings", newBooking); 
+  console.log("req.body post =", req.body);
+  console.log("newBookings =", newBooking);
   bookings.push(newBooking);
-
   res.json(bookings);
-}) 
+});
 
 app.listen(PORT, function () {
   console.log("Server is listening on Port ", PORT);
 });
-
 
 module.exports = bookings;
