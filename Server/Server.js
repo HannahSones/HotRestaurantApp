@@ -50,7 +50,6 @@ app.get("/api/tables", function (req, res) {
   // }
 });
 
-
 app.post("/api/reserve", function (req, res) {
   const newBooking = req.body;
   console.log("req.body post =", req.body);
@@ -60,7 +59,9 @@ app.post("/api/reserve", function (req, res) {
 });
 
 
+
 app.use("/", express.static("../Client"));
+
 
 app.listen(PORT, function () {
   console.log("Server is listening on Port ", PORT);
