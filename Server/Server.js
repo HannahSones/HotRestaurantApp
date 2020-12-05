@@ -37,18 +37,31 @@ var bookings = [
 
 //  Create a new character - takes in JSON input
 
-app.use("/", express.static("../Client"));
-
-app.get("/tables", function (req, res) {
+app.get("/api/tables", function (req, res) {
+  console.log("req.body get =", req.body);
   res.json(bookings);
+  // let table = [];
+  // let waiting = [];
+  console.log("bookings =", bookings); 
+  // if (bookings < 5){
+  //   waiting.push(req.body);   
+  // }else{
+  //   table.push(req.body);
+  // }
 });
 
-app.post("/tables", function (req, res) {
+app.post("/api/reserve", function (req, res) {
   const newBooking = req.body;
-  console.log("newBookings", newBooking);
+  console.log("req.body post =", req.body);
+  console.log("newBookings =", newBooking);
   bookings.push(newBooking);
   res.json(bookings);
 });
+
+
+
+app.use("/", express.static("../Client"));
+
 
 app.listen(PORT, function () {
   console.log("Server is listening on Port ", PORT);
