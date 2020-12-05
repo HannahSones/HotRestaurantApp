@@ -5,7 +5,6 @@ $(document).ready(function(){
   const contactName = $("#inputName");
   const phoneNumber = $("#inputPhoneNumber");
   const emailAddress = $("#inputEmail");
-  const id = $("#uniqueID");
   const reserveForm = $("#reserveForm");
 
 
@@ -19,14 +18,12 @@ $(document).ready(function(){
     const name = contactName.val();
     const email = emailAddress.val();
     const phone = phoneNumber.val();
-    const uniqueId = id.val();
     console.log("Data received");
-    console.log(name, email, phone, uniqueId); 
+    console.log(name, email, phone,); 
     const reserve = {
       "name": name,
       "email": email,
       "phone": phone,
-      "id": uniqueId
     };
     console.log("reserve =", reserve);
   
