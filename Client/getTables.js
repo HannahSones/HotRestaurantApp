@@ -35,7 +35,7 @@ $(document).ready(function(){
         const element = array[index];
         console.log("element =", element);
         reservedTables.append(
-          `<li class="list-group-item"> ${(index + 1)} | ${array[index].id} </li>`
+          `<li class="list-group-item"> ${(index + 1)} | ${array[index].name} </li>`
         );
       }
 
@@ -47,7 +47,7 @@ $(document).ready(function(){
         const element = array[index];
         console.log("element =", element);
         waitingTables.append(
-          `<li class="list-group-item"> ${(index + 6)} | ${array[index].id} </li>`
+          `<li class="list-group-item"> ${(index + 6)} | ${array[index].name} </li>`
         );
       }
     }
