@@ -27,14 +27,19 @@ $(document).ready(function(){
   
   
     function reservationList(array){
-  
-      for (let index = 0; index < 5; index++) {
+      
+      // if (array.length < 5) { array.length } else { 5 }
+      const arrayLength = array.length < 5 ? array.length : 5;
+    
+      for (let index = 0; index < arrayLength; index++) {
         const element = array[index];
         console.log("element =", element);
         reservedTables.append(
           `<li class="list-group-item"> ${(index + 1)} | ${array[index].id} </li>`
         );
       }
+
+      // for (let index = 0; index < (array.length < 5) ? array.length : 5; index++) {content}
     }
   
     function waitingList(array){
