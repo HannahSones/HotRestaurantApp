@@ -1,5 +1,5 @@
 const express = require("express");
-const insertData = require("../DB/Database");
+const { getData , insertData} = require("../DB/Database");
 
 const app = express();
 const PORT = 3000;
@@ -39,22 +39,25 @@ var bookings = [
 //  Create a new character - takes in JSON input
 
 app.get("/api/tables", function (req, res) {
-  console.log("req.body get =", req.body);
-  res.json(bookings);
-  // let table = [];
-  // let waiting = [];
-  console.log("bookings =", bookings);
-  // if (bookings < 5){
-  //   waiting.push(req.body);
-  // }else{
-  //   table.push(req.body);
-  // }
+  getData().then(function(dbData){
+    console.log("dbData 1 =", dbData);
+    res.json(dbData);
+  })
+  .catch(function(err){
+    console.log("woops", err);
+  });
+  
+  
 });
+
 
 app.post("/api/reserve", function (req, res) {
   const newBooking = req.body;
-  insertData(newBooking);
-  res.json(bookings);
+  insertData(newBooking).then(function(){
+    res.json({"sucess": true});
+  }).catch(function(err){
+    res.json({"sucess": false});
+  });
 });
 
 app.use("/", express.static("../Client"));
