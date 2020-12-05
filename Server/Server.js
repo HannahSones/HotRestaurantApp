@@ -1,4 +1,5 @@
 const express = require("express");
+const insertData = require("../DB/Database");
 
 const app = express();
 const PORT = 3000;
@@ -42,9 +43,9 @@ app.get("/api/tables", function (req, res) {
   res.json(bookings);
   // let table = [];
   // let waiting = [];
-  console.log("bookings =", bookings); 
+  console.log("bookings =", bookings);
   // if (bookings < 5){
-  //   waiting.push(req.body);   
+  //   waiting.push(req.body);
   // }else{
   //   table.push(req.body);
   // }
@@ -52,16 +53,11 @@ app.get("/api/tables", function (req, res) {
 
 app.post("/api/reserve", function (req, res) {
   const newBooking = req.body;
-  console.log("req.body post =", req.body);
-  console.log("newBookings =", newBooking);
-  bookings.push(newBooking);
+  insertData(newBooking);
   res.json(bookings);
 });
 
-
-
 app.use("/", express.static("../Client"));
-
 
 app.listen(PORT, function () {
   console.log("Server is listening on Port ", PORT);

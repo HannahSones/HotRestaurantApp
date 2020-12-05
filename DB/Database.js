@@ -7,16 +7,19 @@ const connection = mysql.createConnection({
   database: "reservationList",
 });
 
-connection.connect(function (err) {
-  if (err) console.log("Cannot Connect", err);
-  connection.query(getData(), function (err, res) {
-    if (err) console.log(err);
-    console.log("Query For All", res);
-  });
-});
-
 const insertData = (booking) => {
-  return `INSERT INTO customers (first_name,surname,mobile) VALUES ('${booking.firstName}','${booking.lastName}',${booking.mobile})`;
+  connection.connect(function (err) {
+    if (err) console.log("Cannot Connect", err);
+    connection.query(
+      `INSERT INTO customers (name,email,mobile) VALUES ('${booking.name}','${booking.email}','${booking.phone}')`,
+      function (err, res) {
+        if (err) console.log(err);
+        console.log("Table booked", res);
+      }
+    );
+  });
 };
 
 const getData = () => `SELECT * FROM customers`;
+
+module.exports = insertData;
