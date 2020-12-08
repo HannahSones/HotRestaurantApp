@@ -10,7 +10,15 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "handlebars": "^4.7.6",
+=======
+    "express-handlebars": "^5.2.0",
+>>>>>>> Stashed changes
+=======
+    "express-handlebars": "^5.2.0",
+>>>>>>> Stashed changes
     "mysql": "^2.18.1",
     "nodemon": "^2.0.6"
   }
