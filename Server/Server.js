@@ -1,7 +1,9 @@
 const express = require("express");
+
 const exphbs = require("express-handlebars");
 const { getData, insertData} = require("../DB/Database");
 const dealWithData = require('./tablesRender');
+
 
 const app = express();
 const PORT = 3000;
@@ -15,13 +17,16 @@ app.engine("handlebars", exphbs({ defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
 // For the client to sed their data into the server. 
+
 app.post("/api/reserve", function (req, res) {
   const newBooking = req.body;
-  insertData(newBooking).then(function(){
-    res.json({"sucess": true});
-  }).catch(function(err){
-    res.json({"sucess": false});
-  });
+  insertData(newBooking)
+    .then(function () {
+      res.json({ sucess: true });
+    })
+    .catch(function (err) {
+      res.json({ sucess: false });
+    });
 });
 
 // Data = dbData

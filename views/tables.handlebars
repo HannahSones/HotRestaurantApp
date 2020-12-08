@@ -1,0 +1,41 @@
+<div class="jumbotron">
+    <h1 class="display-4"><i class="fas fa-fire"></i> Hot Restaurant</h1>
+    <hr class="my-4">
+    <p>Current reservations and waiting list</p>
+    <button type="button" class="btn btn-primary" onclick="document.location='reserve.html'">Make
+        reservation</button>
+    <button type="button" class="btn btn-danger" onclick="document.location='index.html'"><i
+            class="fas fa-home"></i></button>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header"><i class="far fa-calendar-check"></i> Current reservations</div>
+                <div class="card-body">
+                    <ul id="reserved-tables" class="list-group">
+                        {{#each reserved }}
+                        <li class="list-group-item"> {{id}} | {{name}} </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header"><i class="far fa-clock"></i> Waiting list</div>
+                <div class="card-body">
+                    <ul id="waiting-tables" class="list-group">
+                        {{#each waiting }}
+                        <li class="list-group-item"> {{id}} | {{name}} </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
