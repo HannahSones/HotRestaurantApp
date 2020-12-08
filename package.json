@@ -10,8 +10,12 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+=======
+    "express-handlebars": "^5.2.0",
+>>>>>>> a7b285f31d08b1b7c29bfdf53ec2701e6d6c4946
     "handlebars": "^4.7.6",
 =======
     "express-handlebars": "^5.2.0",
