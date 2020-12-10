@@ -6,14 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Hot Restaurant | Reservations</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-		integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"/>
-
+		integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
 		integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
 		crossorigin="anonymous" />
-
-	<link rel="stylesheet" href="styles.css" />
-
 </head>
 
 <body>
@@ -21,32 +17,31 @@
 	<div class="jumbotron">
 		<h1 class="display-4"><i class="fas fa-fire"></i> Hot Restaurant</h1>
 		<hr class="my-4">
-		<p>Make your reservation</p>
+		<p>Delete your reservation</p>
 		<button type="button" class="btn btn-primary" type="submit" onclick="document.location='tables'">View
 			Tables</button>
 		<button type="button" class="btn btn-danger" type="submit" onclick="document.location='index.html'"><i
 				class="fas fa-home"></i></button>
-		<button type="button" class="btn btn-danger" onclick="document.location='deleteRes.html'">Delete
-			reservation</button>
+		<button type="button" class="btn btn-danger" onclick="document.location='reserve.html'">Make
+			Reservation</button>
 	</div>
 
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="card bg-light mb-3" style="max-width: 18rem;">
-					<div class="card-header">Table Reservation</div>
+					<div class="card-header">Delete Reservation</div>
 					<div class="card-body">
-						<form id="reserveForm">
-							<label for="name">Name</label>
-							<input type="text" class="form-control" id="inputName" name="name" required >
-
-							<label for="phone number">Phone Number</label>
-							<input type="text" class="form-control" id="inputPhoneNumber" name="phone number" required pattern="^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$" >
+						<form id="deleteForm">
 
 							<label for="email">Email</label>
-							<input type="email" class="form-control" id="inputEmail" name="email" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+							<input type="email" class="form-control" id="deleteEmail" name="email">
+
+							<label for="resID">Reservation ID</label>
+							<input type="number" class="form-control" id="resID" name="resID">
 							<br />
-							<button id="submitForm" type="submit" name="Submit" class="btn btn-primary">Submit</button>
+							<button id="deleteButton" type="submit" name="Submit"
+								class="btn btn-primary">Submit</button>
 						</form>
 					</div>
 				</div>
