@@ -66,7 +66,23 @@ getData = function () {
   });
 };
 
+deleteQuery = function (body) {
+  return new Promise(function (resolve, reject) {
+    connection.query(
+      `DELETE FROM customers WHERE id = ${body.id} AND email = '${body.email}'`,
+      function (err, rows) {
+        if (rows === undefined) {
+          reject(new Error("Error rows is undefined"));
+        } else {
+          resolve(rows);
+        }
+      }
+    );
+  });
+};
+
 module.exports = {
   insertData: insertData,
   getData: getData,
+  deleteQuery: deleteQuery,
 };

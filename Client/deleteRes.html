@@ -17,32 +17,31 @@
 	<div class="jumbotron">
 		<h1 class="display-4"><i class="fas fa-fire"></i> Hot Restaurant</h1>
 		<hr class="my-4">
-		<p>Make your reservation</p>
+		<p>Delete your reservation</p>
 		<button type="button" class="btn btn-primary" type="submit" onclick="document.location='tables'">View
 			Tables</button>
 		<button type="button" class="btn btn-danger" type="submit" onclick="document.location='index.html'"><i
 				class="fas fa-home"></i></button>
-		<button type="button" class="btn btn-danger" onclick="document.location='deleteRes.html'">Delete
-			reservation</button>
+		<button type="button" class="btn btn-danger" onclick="document.location='reserve.html'">Make
+			Reservation</button>
 	</div>
 
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="card bg-light mb-3" style="max-width: 18rem;">
-					<div class="card-header">Table Reservation</div>
+					<div class="card-header">Delete Reservation</div>
 					<div class="card-body">
-						<form id="reserveForm">
-							<label for="name">Name</label>
-							<input type="text" class="form-control" id="inputName" name="name">
-
-							<label for="phone number">Phone Number</label>
-							<input type="number" class="form-control" id="inputPhoneNumber" name="phone number">
+						<form id="deleteForm">
 
 							<label for="email">Email</label>
-							<input type="email" class="form-control" id="inputEmail" name="email">
+							<input type="email" class="form-control" id="deleteEmail" name="email">
+
+							<label for="resID">Reservation ID</label>
+							<input type="number" class="form-control" id="resID" name="resID">
 							<br />
-							<button id="submitForm" type="submit" name="Submit" class="btn btn-primary">Submit</button>
+							<button id="deleteButton" type="submit" name="Submit"
+								class="btn btn-primary">Submit</button>
 						</form>
 					</div>
 				</div>
