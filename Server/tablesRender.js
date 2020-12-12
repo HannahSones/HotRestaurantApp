@@ -1,6 +1,7 @@
 const dealWithData = (data, res) => {
-  const reserved = data.slice(0, 5);
-  const waiting = data.slice(5);
+  const availableTables = 5
+  const reserved = data.slice(0, availableTables);
+  const waiting = data.slice(availableTables);
 
   res.render("tables", {
     reserved: reserved,
