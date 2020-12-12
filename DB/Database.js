@@ -1,34 +1,57 @@
-const mysql = require("mysql");
+const { Sequelize, DataTypes } = require("sequelize");
 const ck = require("ckey");
 const password = ck.password;
-const connection = mysql.createConnection({
+const connection = new Sequelize("reservationList", "root", password, {
   host: "localhost",
-  port: 3306,
-  user: "root",
-
-  password: 'Br@ntwood34',
-
-  database: "reservationList",
+  dialect: "mysql",
 });
 
-connection.connect(function (err) {
-  if (err) throw err;
-  console.log("database connected");
+const Customer = connection.define(
+  "customers",
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    name: { type: DataTypes.STRING(255) },
+    email: { type: DataTypes.STRING(255), allowNull: false },
+    mobile: { type: DataTypes.INTEGER(15) },
+  },
+  {
+    timestamps: false,
+  }
+);
+
+Customer.sync();
+connection.authenticate().then(() => {
+  console.log("connected to DB");
 });
 
-// const insertData = async (booking) => {
+async function insertData(booking) {
+  try {
+    const insert = await Customer.create({
+      name: `${booking.name}`,
+      email: `${booking.email}`,
+      mobile: `${booking.phone}`,
+    });
+    console.log("Booking Added", insert);
+  } catch (err) {
+    console.log(err);
+  }
+}
 
-//     connection.query(
-//       `INSERT INTO customers (name,email,mobile) VALUES ('${booking.name}','${booking.email}','${booking.phone}')`,
-//       function (err, res) {
-//         if (err) console.log(err);
-//         console.log("Table booked", res);
-//       }
-//     );
+async function getData() {
+  try {
+    const matches = await Customer.findAll({ raw: true });
+    return matches;
+  } catch (err) {
+    console.log(err);
+  }
+}
 
-// };
-
-insertData = function (booking) {
+/* insertData = function (booking) {
   return new Promise(function (resolve, reject) {
     connection.query(
       `INSERT INTO customers (name,email,mobile) VALUES ('${booking.name}','${booking.email}','${booking.phone}')`,
@@ -43,7 +66,7 @@ insertData = function (booking) {
       }
     );
   });
-};
+}; */
 
 // const getData = async () => {
 //   const getSql = `SELECT * FROM customers`;
@@ -56,7 +79,7 @@ insertData = function (booking) {
 
 // };
 
-getData = function () {
+/* getData = function () {
   return new Promise(function (resolve, reject) {
     connection.query(`SELECT * FROM customers`, function (err, rows) {
       if (rows === undefined) {
@@ -66,7 +89,7 @@ getData = function () {
       }
     });
   });
-};
+}; */
 
 deleteQuery = function (body) {
   return new Promise(function (resolve, reject) {
