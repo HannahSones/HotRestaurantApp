@@ -1,9 +1,8 @@
 const express = require("express");
 
 const exphbs = require("express-handlebars");
-const { getData, insertData} = require("../DB/Database");
-const dealWithData = require('./tablesRender');
-
+const { getData, insertData } = require("../DB/Database");
+const { dealWithData } = require("./tablesRender");
 
 const app = express();
 const PORT = 3000;
@@ -12,11 +11,11 @@ const PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Set Handlebars as the default template engine 
-app.engine("handlebars", exphbs({ defaultLayout: "main"}));
+// Set Handlebars as the default template engine
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// For the client to sed their data into the server. 
+// For the client to sed their data into the server.
 
 app.post("/api/reserve", function (req, res) {
   const newBooking = req.body;
@@ -30,17 +29,23 @@ app.post("/api/reserve", function (req, res) {
 });
 
 // Data = dbData
-app.get ("/tables", function (req, res){
-  getData().then(function(dbData){
+app.get("/tables", function (req, res) {
+  getData().then(function (dbData) {
     console.log("dbData 1 =", dbData);
     dealWithData(dbData, res);
-    
-  })
-})
+  });
+});
+
+app.delete("/tables", function (req, res) {
+  const body = req.body;
+  deleteQuery(body).then(function () {
+    console.log("Entry Deleted");
+    res.end();
+  });
+});
 
 app.use("/", express.static("../Client"));
 
 app.listen(PORT, function () {
   console.log("Server is listening on Port ", PORT);
 });
-
