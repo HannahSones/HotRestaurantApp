@@ -51,6 +51,31 @@ async function getData() {
   }
 }
 
+async function deleteQuery(body) {
+  try {
+    const deleted = await Customer.destroy({
+      where: { id: `${body.id}`, email: `${body.email}` },
+    });
+    console.log("deleted", deleted);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+/* deleteQuery = function (body) {
+  return new Promise(function (resolve, reject) {
+    connection.query(
+      `DELETE FROM customers WHERE id = ${body.id} AND email = '${body.email}'`,
+      function (err, rows) {
+        if (rows === undefined) {
+          reject(new Error("Error rows is undefined"));
+        } else {
+          resolve(rows);
+        }
+      }
+    );
+  });
+}; */
 /* insertData = function (booking) {
   return new Promise(function (resolve, reject) {
     connection.query(
@@ -90,21 +115,6 @@ async function getData() {
     });
   });
 }; */
-
-deleteQuery = function (body) {
-  return new Promise(function (resolve, reject) {
-    connection.query(
-      `DELETE FROM customers WHERE id = ${body.id} AND email = '${body.email}'`,
-      function (err, rows) {
-        if (rows === undefined) {
-          reject(new Error("Error rows is undefined"));
-        } else {
-          resolve(rows);
-        }
-      }
-    );
-  });
-};
 
 module.exports = {
   insertData: insertData,

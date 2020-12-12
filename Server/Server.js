@@ -1,7 +1,7 @@
 const express = require("express");
 
 const exphbs = require("express-handlebars");
-const { getData, insertData } = require("../DB/Database");
+const { getData, insertData, deleteQuery } = require("../DB/Database");
 const { dealWithData } = require("./tablesRender");
 
 const app = express();
